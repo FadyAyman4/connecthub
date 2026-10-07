@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# ConnectHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ConnectHub is a responsive social media web application built with React. Users can create an account, browse a social feed, publish posts, interact with posts, follow other users, manage their profile, and discover random inspirational quotes.
+
+The project combines data from the DummyJSON API with browser-based persistence for user-created content, making it easy to run locally without a separate backend.
+
+## Features
+
+- User registration and login
+- Protected and public-only routes
+- Home feed with posts and user profiles
+- Create, edit, and delete posts
+- Add images to posts
+- Like posts with persisted like state
+- View post details and comments
+- Add and delete comments
+- Search for users
+- Follow and unfollow users
+- Edit profile information and profile image
+- Notifications view
+- Random quote page
+- Responsive layout for desktop and mobile screens
+- Loading, empty, and error states throughout the application
+
+## Tech Stack
+
+- React 19
+- React Router DOM 6
+- Redux Toolkit and React Redux
+- Axios
+- Create React App
+- DummyJSON API
+- Browser `localStorage` for locally created data and session state
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18 or newer
+- npm
+
+### Installation
+
+Clone the repository and install its dependencies:
+
+```bash
+git clone <your-repository-url>
+cd connecthub
+npm install
+```
+
+### Run the application
+
+Start the development server:
+
+```bash
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Command | Description |
+| --- | --- |
+| `npm start` | Runs the app in development mode. |
+| `npm test` | Runs the test runner. |
+| `npm run build` | Creates an optimized production build in `build/`. |
+| `npm run eject` | Ejects the Create React App configuration. This is irreversible. |
 
-### `npm start`
+## Application Routes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Route | Access | Description |
+| --- | --- | --- |
+| `/home` | Authenticated | Browse the home feed and create posts. |
+| `/profile/:id` | Authenticated | View a user's profile and posts. |
+| `/posts/:id` | Public | View a post and its comments. |
+| `/create-post` | Authenticated | Create a new post. |
+| `/edit-post/:id` | Authenticated | Edit an existing post. |
+| `/search` | Public | Search for users. |
+| `/notifications` | Authenticated | View notifications. |
+| `/quotes` | Authenticated | Get a random quote. |
+| `/login` | Public | Sign in to ConnectHub. |
+| `/register` | Public | Create a local ConnectHub account. |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Data and Authentication
 
-### `npm test`
+ConnectHub uses [DummyJSON](https://dummyjson.com) for sample users, posts, comments, authentication fallback, and quote data. Data created within the app is stored in the browser using `localStorage`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The following local data is persisted in the browser:
 
-### `npm run build`
+- Registered users and session tokens
+- User-created posts
+- Comments on local posts
+- Like state
+- Follow relationships
+- Local profile updates
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Because this is a frontend project using browser storage, local accounts and created content are specific to the browser and device where they were created. Clear site storage to reset local application data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```text
+src/
+  components/   Reusable UI components
+  hooks/        Custom React hooks
+  pages/        Route-level page components
+  services/     API and local-storage data services
+  store/        Redux Toolkit slices and store configuration
+  utils/        Shared utility functions
+  App.js        Routing and application shell
+  index.css     Global styles and responsive layout
+```
 
-### `npm run eject`
+## Production Build
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Create a production build with:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The generated files are placed in the `build/` directory and can be served by any static hosting provider.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Future Improvements
 
-## Learn More
+- Replace browser storage with a dedicated backend and database
+- Add stronger password handling and server-side authentication
+- Add image upload storage
+- Add real-time notifications
+- Add automated component and integration test coverage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is intended for educational and portfolio use.
