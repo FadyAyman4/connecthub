@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/connecthub/static/css/main.6a32d6af.css",
+    "main.js": "/connecthub/static/js/main.7def0780.js",
+    "static/media/logo.jpg": "/connecthub/static/media/logo.f3bb81efd3c607a0b858.jpg",
+    "index.html": "/connecthub/index.html",
+    "main.6a32d6af.css.map": "/connecthub/static/css/main.6a32d6af.css.map",
+    "main.7def0780.js.map": "/connecthub/static/js/main.7def0780.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a32d6af.css",
+    "static/js/main.7def0780.js"
+  ]
+}
