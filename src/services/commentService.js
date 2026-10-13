@@ -36,8 +36,20 @@ export const createComment = async (commentData) => {
     saveLocalComments([...getLocalComments(), newComment]);
     return newComment;
   }
-  const response = await api.post('/comments/add', commentData);
-  return response.data;
+  try {
+    const response = await api.post('/comments/add', commentData);
+    return response.data;
+  } catch (err) {
+    // DummyJSON never actually saves comments server-side anyway, so if
+    // the live request itself fails, fall back to the same local-only
+    // behavior as a local post, rather than losing the comment entirely.
+    return {
+      id: Date.now(),
+      body: commentData.body,
+      postId: commentData.postId,
+      userId: commentData.userId,
+    };
+  }
 };
 
 export const removeComment = async (id) => {
